@@ -9,7 +9,7 @@
 //    <div class="tab">topic here</div>
 
 
-console.log(axios.get("https://lambda-times-backend.herokuapp.com/topics"))
+// console.log(axios.get("https://lambda-times-backend.herokuapp.com/topics"))
 
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
 .then( response =>{
@@ -21,6 +21,11 @@ document.querySelector('.topics').appendChild(createDiv(response.data))
 
 
 function createDiv(object){
+  // object.topics.forEach(el =>{
+  //   console.log(el)
+  //   return crEl('div','tab',el)
+  
+  // })
   return crEl('div','tab',object.topics)
 }
 
