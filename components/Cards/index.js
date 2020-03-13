@@ -18,7 +18,6 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
-// console.log(axios.get("https://lambda-times-backend.herokuapp.com/articles"))
 
 axios.get("https://lambda-times-backend.herokuapp.com/articles")
     .then(response => {
@@ -26,27 +25,30 @@ axios.get("https://lambda-times-backend.herokuapp.com/articles")
         console.log(response.data.articles)
 
         for (const prop in response.data.articles) {
-            console.log(prop)
-            console.log(response.data.articles[prop])
+            // console.log(prop)
+            // console.log(response.data.articles[prop])
 
             for (const otherprop in response.data.articles[prop]) {
               console.log(response.data.articles[prop][otherprop])
               document.querySelector('.cards-container').appendChild(createCard(response.data.articles[prop][otherprop]))
             }
-
-
         }
-
         // for (const i = 0; i<response.data.articles.length;i++){
         //   console.log(i)
         //   console.log(response.data.articles)
         // }
-
-
-        // document.querySelector('.cards-container').appendChild(createCard(response.data.articles.javascript[0]))
-        // document.querySelector('.cards-container').appendChild(createCard2(response.data.articles))
-
     })
+
+//Not working for some reason. Works on body but not on this element.
+document.querySelectorAll(".card").addEventListener('click',()=>{
+  alert("you clicked")
+
+  // tabs.style.backgroundColor('green')
+})
+
+
+
+
 
 // <div class="card">
 //   <div class="headline">{Headline of article}</div>
@@ -58,27 +60,6 @@ axios.get("https://lambda-times-backend.herokuapp.com/articles")
 //   </div>
 // </div>
 //
-
-
-// function createCard2(obj) {
-//   const card = crEl('div', 'card')
-//   const headline = crEl('div', 'headline', obj)
-//   const author = crEl('div', 'author')
-//   const imageContainer = crEl('div', 'img-container')
-//   const img = crEl("img")
-//   img.setAttribute('src', `${obj.authorPhoto}`)
-//   const span = crEl('span', '', `By `)
-
-//   card.appendChild(headline)
-//   card.appendChild(author)
-//   author.appendChild(imageContainer)
-//   author.appendChild(span)
-//   imageContainer.appendChild(img)
-
-//   return card
-// }
-
-
 
 function createCard(obj) {
     const card = crEl('div', 'card')
@@ -97,11 +78,6 @@ function createCard(obj) {
 
     return card
 }
-
-// const testcard = createCard('this')
-// console.log(testcard)
-
-// document.querySelector('body').appendChild(testcard)
 
 
 function crEl(tag, cl = "", txt = "") {
