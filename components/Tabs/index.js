@@ -14,8 +14,17 @@ console.log(axios.get("https://lambda-times-backend.herokuapp.com/topics"))
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
 .then( response =>{
 console.log("I'm happy")
+document.querySelector('.topics').appendChild(createDiv(response.data))
 
 })
+
+
+
+function createDiv(object){
+  return crEl('div','tab',object.topics)
+}
+
+
 
 function crEl (tag, cl="", txt=""){
   el = document.createElement(tag) 
