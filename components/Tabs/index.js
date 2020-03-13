@@ -7,3 +7,19 @@
 //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
+
+
+console.log(axios.get("https://lambda-times-backend.herokuapp.com/topics"))
+
+axios.get("https://lambda-times-backend.herokuapp.com/topics")
+.then( response =>{
+console.log("I'm happy")
+
+})
+
+function crEl (tag, cl="", txt=""){
+  el = document.createElement(tag) 
+  if (cl !=""){el.classList.add(cl)}
+  el.textContent = txt
+  return el
+}

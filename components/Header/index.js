@@ -15,7 +15,6 @@ function Header() {
   const h1 = crEl('h1','',"Lambda Times")
   const span2 = crEl('span','temp','98°')
 
-
   headerDiv.appendChild(span)
   headerDiv.appendChild(h1)
   headerDiv.appendChild(span2)
@@ -24,8 +23,8 @@ function Header() {
 
 document.querySelector('.header-container').appendChild(Header())
 
-let test = Header()
-console.log(test)
+// let test = Header()
+// console.log(test)
 
 function crEl (tag, cl="", txt=""){
   el = document.createElement(tag) 
