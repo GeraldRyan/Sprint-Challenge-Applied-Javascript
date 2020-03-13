@@ -12,28 +12,52 @@
 // console.log(axios.get("https://lambda-times-backend.herokuapp.com/topics"))
 
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
-.then( response =>{
-console.log("I'm happy")
-document.querySelector('.topics').appendChild(createDiv(response.data))
+    .then(response => {
+        // console.log("I'm happy")
+        console.log("trending topics")
+        console.log(response)
+        const itemOfInterest = response.data.topics
 
-})
+        
+        for (const prop in itemOfInterest) {
+            // console.log(`object name: ${prop} and value: ${itemOfInterest[prop]}`)
+            console.log(itemOfInterest[prop])
+            document.querySelector('.topics').appendChild(createDiv(itemOfInterest[prop]))
+
+
+        }
 
 
 
-function createDiv(object){
-  // object.topics.forEach(el =>{
-  //   console.log(el)
-  //   return crEl('div','tab',el)
-  
-  // })
-  return crEl('div','tab',object.topics)
+        // document.querySelector('.topics').appendChild(createDiv(response.data.topics))
+
+    })
+
+
+
+function createDiv(object) {
+
+    // object.forEach(el => {
+    //     console.log(el)
+    //     return crEl('div', 'tab', el)
+    // })
+
+    // for (const prop in object) {
+    //     console.log(`object${prop} and ${object[prop]}`)
+
+    // }
+
+    // component = crEl('div', 'tab', object)
+
+
+    return crEl('div', 'tab', object)
 }
 
 
 
-function crEl (tag, cl="", txt=""){
-  el = document.createElement(tag) 
-  if (cl !=""){el.classList.add(cl)}
-  el.textContent = txt
-  return el
+function crEl(tag, cl = "", txt = "") {
+    el = document.createElement(tag)
+    if (cl != "") { el.classList.add(cl) }
+    el.textContent = txt
+    return el
 }

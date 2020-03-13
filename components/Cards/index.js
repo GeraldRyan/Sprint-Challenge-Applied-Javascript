@@ -18,12 +18,12 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
-console.log(axios.get("https://lambda-times-backend.herokuapp.com/articles"))
+// console.log(axios.get("https://lambda-times-backend.herokuapp.com/articles"))
 
 axios.get("https://lambda-times-backend.herokuapp.com/articles")
 .then( response=>{
-
-// console.log("yessss")
+  console.log('article info')
+  console.log(response.data.articles)
 
 document.querySelector('body').appendChild(createCard(response.data.articles.javascript[0]))
 
