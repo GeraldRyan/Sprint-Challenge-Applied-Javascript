@@ -13,24 +13,17 @@
 
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
     .then(response => {
-        // console.log("I'm happy")
-        console.log("trending topics")
-        console.log(response)
+        console.log("I'm happy")
+        // console.log("trending topics")
+        // console.log(response)
         const itemOfInterest = response.data.topics
 
         
         for (const prop in itemOfInterest) {
             // console.log(`object name: ${prop} and value: ${itemOfInterest[prop]}`)
-            console.log(itemOfInterest[prop])
+            // console.log(itemOfInterest[prop])
             document.querySelector('.topics').appendChild(createDiv(itemOfInterest[prop]))
-
-
         }
-
-
-
-        // document.querySelector('.topics').appendChild(createDiv(response.data.topics))
-
     })
 
 
@@ -48,7 +41,6 @@ function createDiv(object) {
     // }
 
     // component = crEl('div', 'tab', object)
-
 
     return crEl('div', 'tab', object)
 }

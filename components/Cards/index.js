@@ -21,31 +21,44 @@
 // console.log(axios.get("https://lambda-times-backend.herokuapp.com/articles"))
 
 axios.get("https://lambda-times-backend.herokuapp.com/articles")
-.then( response=>{
-  console.log('article info')
-  console.log(response.data.articles)
+    .then(response => {
+        console.log('article info:')
+        console.log(response.data.articles)
 
-document.querySelector('body').appendChild(createCard(response.data.articles.javascript[0]))
+        for (const prop in response.data.articles){
+          console.log(prop)
 
-})
+        }
+        document.querySelector('.cards-container').appendChild(createCard(response.data.articles.javascript[0]))
 
+    })
 
-function createCard(obj){
-  const card = crEl('div','card')
-  const headline = crEl('div','headline',obj.headline)
-  const author = crEl('div','author')
-  const imageContainer = crEl('div','img-container')
-  const img = crEl("img")
-  img.setAttribute('src',`${obj.authorPhoto}`)
-  const span = crEl('span','',`By `)
-  
-  card.appendChild(headline)
-  card.appendChild(author)
-  author.appendChild(imageContainer)
-  author.appendChild(span)
-  imageContainer.appendChild(img)
+// <div class="card">
+//   <div class="headline">{Headline of article}</div>
+//   <div class="author">
+//     <div class="img-container">
+//       <img src={url of authors image} />
+//     </div>
+//     <span>By {authors name}</span>
+//   </div>
+// </div>
+//
+function createCard(obj) {
+    const card = crEl('div', 'card')
+    const headline = crEl('div', 'headline', obj)
+    const author = crEl('div', 'author')
+    const imageContainer = crEl('div', 'img-container')
+    const img = crEl("img")
+    img.setAttribute('src', `${obj.authorPhoto}`)
+    const span = crEl('span', '', `By `)
 
-  return card
+    card.appendChild(headline)
+    card.appendChild(author)
+    author.appendChild(imageContainer)
+    author.appendChild(span)
+    imageContainer.appendChild(img)
+
+    return card
 }
 
 // const testcard = createCard('this')
@@ -54,9 +67,9 @@ function createCard(obj){
 // document.querySelector('body').appendChild(testcard)
 
 
-function crEl (tag, cl="", txt=""){
-  el = document.createElement(tag) 
-  if (cl !=""){el.classList.add(cl)}
-  el.textContent = txt
-  return el
+function crEl(tag, cl = "", txt = "") {
+    el = document.createElement(tag)
+    if (cl != "") { el.classList.add(cl) }
+    el.textContent = txt
+    return el
 }
